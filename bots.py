@@ -23,8 +23,8 @@ class Bot():
 		return initiative_roll
 		
 	def melee_hit(self, other_bot):
-		chance_to_hit = random.randint(0, self.melee_hit_percent)
-		if chance_to_hit > other_bot.evasion_percent:
+		chance_to_hit = 100 - random.randint(0, 100)
+		if chance_to_hit <= self.melee_hit_percent and chance_to_hit > other_bot.evasion_percent:
 			print(self.name+' hit ('+str(chance_to_hit)+'%)')
 			return True
 		else:
