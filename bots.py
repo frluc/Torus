@@ -16,21 +16,35 @@ class Bot():
 		self.evasion_percent = evasion_percent
 
 	def print_stats(self):
-		print(self.name+' HP: '+str(self.hp))
+		print(self.name+' HP: '+str(self.hp)+'/'+str(self.hp_max))
 
 	def initiative_roll(self):
 		initiative_roll = random.randint(0, self.initiative)
 		return initiative_roll
 		
-	def melee_hit(self, other_bot):
-		chance_to_hit = 100 - random.randint(0, 100)
-		if chance_to_hit <= self.melee_hit_percent and chance_to_hit > other_bot.evasion_percent:
-			print(self.name+' hit ('+str(chance_to_hit)+'%)')
-			return True
-		else:
-			print(self.name+' missed ('+str(chance_to_hit)+'%)')
-			return False
+	def melee_hit(self, other_bot, hit_mod = 0):
 
+                chance_to_hit = random.randint(1, 100)
+                chance_to_crit = random.randint(1, 100)
+                
+                if chance_to_crit >= 95:
+                        print(self.name+' autohit')
+                        return True
+
+                if chance_to_crit <= 5:
+                        print(self.name+' autofail')
+                        return False
+
+                if chance_to_hit <= self.melee_hit_percent + hit_mod:
+                        if random.randint(1, 100) > other_bot.evasion_percent:
+                                print(self.name+' hit ('+str(chance_to_hit)+'/'+str(self.melee_hit_percent)+')')
+                                return True
+                        else:
+                                print(other_bot.name+' evaded')
+                                return False
+                else:
+                        print(self.name+' missed ('+str(chance_to_hit)+'/'+str(self.melee_hit_percent)+')')
+                        return False
 
 	def ranged_hit(self, other_bot):
 		pass
