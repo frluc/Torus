@@ -30,8 +30,7 @@ class Bot():
                 if chance_to_crit >= 95:
                         print(self.name+' autohit')
                         return True
-
-                if chance_to_crit <= 5:
+                elif chance_to_crit <= 5:
                         print(self.name+' autofail')
                         return False
 
