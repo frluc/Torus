@@ -2,17 +2,35 @@
 
 import random
 from bots import Bot
+from group import Group
 
-#creating 2 bots
+#creating 6 bots
 
 bot1 = Bot('Bob', 20, 20, 10, 2, 60, 5, 40, 3, 25)
 bot2 = Bot('Bill', 20, 20, 10, 2, 60, 5, 40, 3, 25)
+bot3 = Bot('Raoul', 20, 20, 10, 2, 60, 5, 40, 3, 25) 
+bot4 = Bot('Dan', 20, 20, 10, 2, 60, 5, 40, 3, 25)
+bot5 = Bot('Ray', 20, 20, 10, 2, 60, 5, 40, 3, 25)
+bot6 = Bot('Moh', 20, 20, 10, 2, 60, 5, 40, 3, 25)
 
-bot1.print_stats()
-bot2.print_stats()
+#creating 2 groups
+
+group1 = Group("Alpha")
+group2 = Group("Omega")
+
+group1.addbot(bot1)
+group1.addbot(bot2)
+group1.addbot(bot3)
+
+group2.addbot(bot4)
+group2.addbot(bot5)
+group2.addbot(bot6)
+
+group1.groupdisplay()
+group2.groupdisplay()
 
 #let's fight melee!
-
+'''
 while True:
 	
 	bot1_ini = bot1.initiative_roll()
@@ -50,3 +68,4 @@ while True:
 	bot1.print_stats()
 	bot2.print_stats()
 	print('')
+'''
