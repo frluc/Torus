@@ -28,21 +28,21 @@ class Bot():
                 chance_to_crit = random.randint(1, 100)
                 
                 if chance_to_crit >= 95:
-                        print(self.name+' autohit')
+                        print(self.name+' autohit '+other_bot.name)
                         return True
                 elif chance_to_crit <= 5:
-                        print(self.name+' autofail')
+                        print(self.name+' autofail '+other_bot.name)
                         return False
 
                 if chance_to_hit <= self.melee_hit_percent + hit_mod:
                         if random.randint(1, 100) > other_bot.evasion_percent:
-                                print(self.name+' hit ('+str(chance_to_hit)+'/'+str(self.melee_hit_percent)+')')
+                                print(self.name+' hit ('+str(chance_to_hit)+'/'+str(self.melee_hit_percent)+') '+other_bot.name)
                                 return True
                         else:
                                 print(other_bot.name+' evaded')
                                 return False
                 else:
-                        print(self.name+' missed ('+str(chance_to_hit)+'/'+str(self.melee_hit_percent)+')')
+                        print(self.name+' missed ('+str(chance_to_hit)+'/'+str(self.melee_hit_percent)+') '+other_bot.name)
                         return False
 
         def ranged_hit(self, other_bot):

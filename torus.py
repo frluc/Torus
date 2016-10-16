@@ -36,58 +36,32 @@ group2.groupdisplay()
 
 print()
 
-#group initiative
+#group fight
 
-group1_ini = 0
-for x in group1.bot_list:
-        group1_ini += x.initiative_roll()
-print(group1.group_name+"initiative:"+str(group1_ini))
+def group_fight(g1, g2):
+        
+        init_order = list()
+        
+        for bot in g1.bot_list:
+                init_order.append([bot, bot.initiative_roll()])
+        init_order.sort(key=lambda x: x[1])
 
-group2_ini = 0
-for y in group2.bot_list:
-        group2_ini += x.initiative_roll()
-print(group2.group_name+"initiative:"+str(group2_ini))
+        fight_order = list()
+
+        for i in range(0, len(init_order)):
+                fight_order.append(init_order[i][0])
+
+        for bot in fight_order:
+                print(bot.name+' acts')
+                bot2 = g2.bot_list[random.randint(0, len(g2.bot_list) - 1)]
+                if bot.melee_hit(bot2):
+                        bot2.take_damage(bot.melee_dmg)
+
+group_fight(group1, group2)
+group_fight(group2, group1)
 
 print()
+group1.groupdisplay()
 
-'''
-#let's fight melee!
-
-while True:
-	
-        bot1_ini = bot1.initiative_roll()
-	bot2_ini = bot2.initiative_roll()
-
-	if bot1_ini > bot2_ini:
-		print(bot1.name+' act first')
-		if bot1.melee_hit(bot2):
-			bot2.take_damage(bot1.melee_dmg)
-			if bot2.hp <= 0:
-				break
-		if bot2.melee_hit(bot1):
-			bot1.take_damage(bot2.melee_dmg)
-			if bot1.hp <= 0:
-				break
-	elif bot2_ini > bot1_ini:
-		print(bot2.name+' act first')
-		if bot2.melee_hit(bot1):
-			bot1.take_damage(bot2.melee_dmg)
-			if bot1.hp <= 0:
-				break
-		if bot1.melee_hit(bot2):
-			bot2.take_damage(bot1.melee_dmg)
-			if bot2.hp <= 0:
-				break
-	else:
-                print('double hit!')
-                if bot2.melee_hit(bot1):
-                        bot1.take_damage(bot2.melee_dmg)
-                if bot1.melee_hit(bot2):
-                        bot2.take_damage(bot1.melee_dmg)
-                if bot1.hp <= 0 or bot2.hp <= 0:
-                        break
-
-	bot1.print_stats()
-	bot2.print_stats()
-	print('')
-'''
+print()
+group2.groupdisplay()
