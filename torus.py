@@ -18,22 +18,44 @@ bot6 = Bot('Moh', 20, 20, 10, 2, 60, 5, 40, 3, 25)
 group1 = Group("Alpha")
 group2 = Group("Omega")
 
+print()
 group1.addbot(bot1)
 group1.addbot(bot2)
 group1.addbot(bot3)
 
+print()
 group2.addbot(bot4)
 group2.addbot(bot5)
 group2.addbot(bot6)
 
+print()
 group1.groupdisplay()
+
+print()
 group2.groupdisplay()
 
-#let's fight melee!
+print()
+
+#group initiative
+
+group1_ini = 0
+for x in group1.bot_list:
+        group1_ini += x.initiative_roll()
+print(group1.group_name+"initiative:"+str(group1_ini))
+
+group2_ini = 0
+for y in group2.bot_list:
+        group2_ini += x.initiative_roll()
+print(group2.group_name+"initiative:"+str(group2_ini))
+
+print()
+
 '''
+#let's fight melee!
+
 while True:
 	
-	bot1_ini = bot1.initiative_roll()
+        bot1_ini = bot1.initiative_roll()
 	bot2_ini = bot2.initiative_roll()
 
 	if bot1_ini > bot2_ini:
