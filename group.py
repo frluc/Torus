@@ -5,26 +5,30 @@ class Group():
         self.group_name = group_name
         self.bot_list = list()
 
-    def groupdisplay(self):
+    def display_group(self):
         print("group "+self.group_name+":")
         for x in self.bot_list:
             x.print_stats()
 
-    def groupsize(self):
+    def size_group(self):
         return len(self.bot_list)
 
-    def addbot(self, bottoadd):
+    def add_bot(self, bottoadd):
 
-        if self.groupsize() < 10:
+        if self.size_group() < 10:
             self.bot_list.append(bottoadd)
             print(bottoadd.name+" added to "+self.group_name)
         else:
             print("group already full")
 
-    def removebot(self, bottoremove):
+    def remove_bot(self, bottoremove):
 
         if self.bot_list.count(bottoremove) > 0:
             self.bot_list.remove(bottoremove)
             print(bottoremove.name+" removed from "+self.group_name)
         else:
             print(bottoremove.name+" not in group")
+
+    def pool_statforgroup(self, stattopool):
+
+        pass

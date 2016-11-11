@@ -19,20 +19,20 @@ group1 = Group("Alpha")
 group2 = Group("Omega")
 
 print()
-group1.addbot(bot1)
-group1.addbot(bot2)
-group1.addbot(bot3)
+group1.add_bot(bot1)
+group1.add_bot(bot2)
+group1.add_bot(bot3)
 
 print()
-group2.addbot(bot4)
-group2.addbot(bot5)
-group2.addbot(bot6)
+group2.add_bot(bot4)
+group2.add_bot(bot5)
+group2.add_bot(bot6)
 
 print()
-group1.groupdisplay()
+group1.display_group()
 
 print()
-group2.groupdisplay()
+group2.display_group()
 
 print()
 
@@ -61,7 +61,7 @@ group_fight(group1, group2)
 group_fight(group2, group1)
 
 print()
-group1.groupdisplay()
+group1.display_group()
 
 print()
-group2.groupdisplay()
+group2.display_group()
