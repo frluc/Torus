@@ -29,6 +29,9 @@ class Group():
         else:
             print(bottoremove.name+" not in group")
 
-    def pool_statforgroup(self, stattopool):
+    def pool_group_stat(self, stattopool):
 
-        pass
+        stat = 0
+        for bot in self.bot_list:
+            stat = stat + getattr(bot, stattopool)
+        return(stat)

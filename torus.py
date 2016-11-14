@@ -30,9 +30,11 @@ group2.add_bot(bot6)
 
 print()
 group1.display_group()
+print(group1.pool_group_stat("initiative"))
 
 print()
 group2.display_group()
+print(group1.pool_group_stat("initiative"x))
 
 print()
 
